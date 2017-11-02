@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Users</title>
+        <script type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" />
+        <script type="text/javascript" src="../js/app.js"></script>
+    </head>
+    <body ng-app="crudApp">
+        <div ng-controller="UserCRUDController">
+            <table>
+                <tr>
+                    <td>
+                        {{message}}
+                        <br/>
+                        {{errorMessage}}
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                    <td>
+                        <input type="text" id="username" ng-model="user.username" title="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        <input type="text" id="name" ng-model="user.name" title="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address:
+                    </td>
+                    <td>
+                        <input type="text" id="address" ng-model="user.address" title="address">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        <input type="text" id="email" ng-model="user.email" title="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mobile:
+                    </td>
+                    <td>
+                        <input type="text" id="mobile" ng-model="user.mobile" title="mobile">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a ng-click="addUser(user.username, user.name, user.address, user.email, user.mobile)">Add User</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

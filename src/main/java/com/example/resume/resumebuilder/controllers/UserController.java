@@ -17,6 +17,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+	@RequestMapping(name = "/", method = RequestMethod.GET)
+	public String index() {
+		return "index";
+	}
+
     @RequestMapping(name = "/save", method = RequestMethod.POST)
     public void save(@Valid @RequestBody User user) {
         userRepository.save(user);
