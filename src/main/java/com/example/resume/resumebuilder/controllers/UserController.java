@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-	@RequestMapping(name = "/", method = RequestMethod.GET)
-	public String index() {
-		return "index";
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public List findItems() {
+        return userRepository.findAll();
+    }
 
-    @RequestMapping(name = "/save", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public void save(@Valid @RequestBody User user) {
         userRepository.save(user);
 
