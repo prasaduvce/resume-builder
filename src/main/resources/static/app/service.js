@@ -1,30 +1,15 @@
-app.service('UserCRUDService',['$http', function($http) {
+var app = angular.module('crudApp');
 
-    this.getUser = function getUser(userId) {
-        return $http({
-            method: 'GET',
-            url: 'users/'+userId
-        });
-    };
-
-    this.addUser = function addUser(username, name, address, email, mobile) {
-        return $http ({
-            method: 'POST',
-            url: 'users',
-            data: {
-                'username': username,
-                'name': name,
-                'address': address,
-                'email': email,
-                'mobile': mobile
-            }
-        });
-    };
-
-    this.getAllUsers = function getAllUsers() {
-        return $http({
-            method: 'GET',
-            url: 'users'
-        });
-    };
+app.factory('UserCRUDService',['$http', function($http) {
+    return {
+        getUser: function(userId) {
+           return $http.get('users/'+userId);
+        },
+        addUser: function(user) {
+            return $http.post('users', user);
+        },
+        getAllUsers: function() {
+            return $http.get('users');
+        }
+    }
 }]);
