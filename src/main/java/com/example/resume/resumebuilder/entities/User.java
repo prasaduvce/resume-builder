@@ -20,7 +20,6 @@ public class User {
     @NotBlank
     private String name;
 
-    @NotBlank
     private String address;
 
     @NotBlank
