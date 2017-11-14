@@ -6,13 +6,19 @@
     <title>Users</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+
+    <style type="text/css">
+        input.ng-invalid.ng-dirty {
+            border: 1px solid red;
+        }
+    </style>
 </head>
 <body ng-app="crudApp">
 
 <h1 class="text-info bg-info">User Registration</h1>
 <p class="text-primary">Please enter the user details for registration.</p>
 <div ng-controller="UserCRUDController" class="container-fluid">
-    <form name="userRegForm" novalidate>
+    <form name="userRegForm" ng-submit="addUser(user)" novalidate="">
         <div class="table-responsive">
             <table class="table-bordered table-hover">
                 <tr>
@@ -20,9 +26,9 @@
                         Username:
                     </td>
                     <td>
-                        <input type="text" id="username" ng-model="user.username" title="username" required>
+                        <input type="text" id="username" name="username" ng-model="user.username" title="username" required>
                         <div>
-                            <span ng-show="userRegForm.$dirty && userRegForm.username.$error.required">
+                            <span ng-show="userRegForm.username.$dirty && userRegForm.username.$error.required">
                                 Enter username
                             </span>
                         </div>
@@ -34,9 +40,9 @@
                         Name:
                     </td>
                     <td>
-                        <input type="text" id="name" ng-model="user.name" title="name" required>
+                        <input type="text" id="name" name="name" ng-model="user.name" title="name" required>
                         <div>
-                            <span ng-show="userRegForm.$dirty && userRegForm.name.$error.required">
+                            <span ng-show="userRegForm.name.$dirty && userRegForm.name.$error.required">
                                 Enter name
                             </span>
                         </div>
@@ -47,7 +53,7 @@
                         Address:
                     </td>
                     <td>
-                        <input type="text" id="address" ng-model="user.address" title="address">
+                        <input type="text" id="address" name="address" ng-model="user.address" title="address">
                     </td>
                 </tr>
                 <tr>
@@ -55,10 +61,13 @@
                         Email:
                     </td>
                     <td>
-                        <input type="email" id="email" ng-model="user.email" title="email" required>
+                        <input type="email" id="email" name="email" ng-model="user.email" title="email" required>
                         <div>
-                            <span ng-show="userRegForm.$dirty && userRegForm.email.$error.required">
+                            <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.required">
                                 Enter email
+                            </span>
+                            <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.email">
+                                Enter valid email
                             </span>
                         </div>
                     </td>
@@ -68,24 +77,24 @@
                         Mobile:
                     </td>
                     <td>
-                        <input type="text" id="mobile" ng-model="user.mobile" title="mobile" required>
+                        <input type="text" id="mobile" name="mobile" ng-model="user.mobile" title="mobile" required>
                         <div>
-                            <span ng-show="userRegForm.$dirty && userRegForm.mobile.$error.required">
-                                Enter mobile
+                            <span ng-show="userRegForm.mobile.$dirty && userRegForm.mobile.$error.required">
+                                Enter mobile number
                             </span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="reset" ng-click="reset(userRegForm)" value="Reset">
+                        <input type="reset" ng-click="reset(userRegForm)" value="Reset" class="btn btn-default">
                     </td>
                     <td>
-                        <input type="submit" value="Add User" class="btn btn-primary" ng-click="addUser(user)">
+                        <input type="submit" value="Add User" class="btn btn-primary" ng-disabled="userRegForm.$invalid">
                     </td>
                 </tr>
             </table>
-        </div>
+       </div>
     </form>
     <pre>user = {{user | json}}</pre>
     <pre>master = {{master | json}}</pre>
