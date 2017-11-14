@@ -7,6 +7,7 @@ public enum ErrorCodes {
 	USER_AUTHENTICATION_FAILED( "User authentication failed"),
 	LOGGED_IN_HEADER_IS_NULL("trv-authorized header is null"),
 	BOOKING_CORE_SAVE_API_ERROR("Exception while saving booking core data"),
+	FIELD_IS_NOT_UNIQUE("Value should be unique"),
 	UNHANDLED_EXCEPTION_IN_BOOKING("Unhandled exception while booking, please contact booking team");
 
 	private final String description;

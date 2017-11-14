@@ -18,6 +18,17 @@
 <h1 class="text-info bg-info">User Registration</h1>
 <p class="text-primary">Please enter the user details for registration.</p>
 <div ng-controller="UserCRUDController" class="container-fluid">
+    <div ng-show="errors.length > 0">
+        <div class="bg-warning"> Please correct below errors. </div>
+        <div ng-repeat="error in errors" class="bg-danger">
+            {{error.errorMessage}}
+        </div>
+    </div>
+
+    <div ng-show="httpStatus === 200">
+        <div class="bg-success">User details saved successfully.</div>
+    </div>
+
     <form name="userRegForm" ng-submit="addUser(user)" novalidate="">
         <div class="table-responsive">
             <table class="table-bordered table-hover">

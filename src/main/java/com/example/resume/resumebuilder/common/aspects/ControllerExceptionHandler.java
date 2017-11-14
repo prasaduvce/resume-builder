@@ -14,6 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -82,6 +83,19 @@ public class ControllerExceptionHandler {
 	public ErrorResponse handleBookingException(AppException appException) {
 		ErrorResponse errorResponse = new ErrorResponse();
 		errorResponse.setErrorInfos(appException.getErrors());
+		return errorResponse;
+	}
+
+	/**
+	 * To handle default exception.
+	 * @param duplicateKeyException when exception is thrown.
+	 * @return error response with error code and message.
+	 */
+	@ExceptionHandler(value = DuplicateKeyException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorResponse handleException(DuplicateKeyException duplicateKeyException) {
+		ErrorResponse errorResponse = new ErrorResponse();
+		errorResponse.setErrorInfos(Arrays.asList(new ErrorInfo(ErrorCodes.FIELD_IS_NOT_UNIQUE.name(),  duplicateKeyException.getMessage())));
 		return errorResponse;
 	}
 
