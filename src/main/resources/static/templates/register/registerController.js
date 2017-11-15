@@ -1,6 +1,6 @@
 var app = angular.module('crudApp');
 
-app.controller('UserCRUDController', ['$scope', 'UserCRUDService', function ($scope, UserCRUDService) {
+app.controller('RegisterController', ['$scope', 'RegisterService', function ($scope, RegisterService) {
 
     $scope.master = {};
     $scope.errors = [];
@@ -8,7 +8,7 @@ app.controller('UserCRUDController', ['$scope', 'UserCRUDService', function ($sc
     $scope.addUser = function (user) {
         if (user) {
             $scope.master = angular.copy(user);
-            UserCRUDService.addUser($scope.master)
+            RegisterService.addUser($scope.master)
                 .success(function(data, status, headers, config) {
                     console.log("POST response from serverdata, , status, headers, config is ===> "+data, status, headers, config);
                     $scope.httpStatus = status;

@@ -5,7 +5,7 @@ app.config(function($routeProvider) {
         templateUrl: '/templates/home/home.html'
     }).when('/register', {
         templateUrl: '/templates/register/register.html',
-        controller: 'UserCRUDController'
+        controller: 'RegisterController'
     }).when('/login', {
         templateUrl: '/templates/login/login.html'
     }).when('/resumeForm', {

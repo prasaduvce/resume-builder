@@ -1,6 +1,6 @@
 var app = angular.module('crudApp');
 
-app.factory('UserCRUDService',['$http', function($http) {
+app.factory('RegisterService',['$http', function($http) {
     return {
         getUser: function(userId) {
             return $http.get('users/'+userId).success(function (data) {
