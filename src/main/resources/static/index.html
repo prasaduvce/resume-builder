@@ -15,103 +15,39 @@
 </head>
 <body ng-app="crudApp">
 
-<h1 class="text-info bg-info">User Registration</h1>
-<p class="text-primary">Please enter the user details for registration.</p>
-<div ng-controller="UserCRUDController" class="container-fluid">
-    <div ng-show="errors.length > 0">
-        <div class="bg-warning"> Please correct below errors. </div>
-        <div ng-repeat="error in errors" class="bg-danger">
-            {{error.errorMessage}}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a ng-href="#/">Home</a></li>
+                <li><a ng-href="#/register">Register</a></li>
+                <li><a ng-href="#/login">Login</a></li>
+                <li><a ng-href="#/resumeForm">Resume Form</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ng-href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
         </div>
     </div>
+</nav>
 
-    <div ng-show="httpStatus === 200">
-        <div class="bg-success">User details saved successfully.</div>
-    </div>
+<div ng-view>
 
-    <form name="userRegForm" ng-submit="addUser(user)" novalidate="">
-        <div class="table-responsive">
-            <table class="table-bordered table-hover">
-                <tr>
-                    <td>
-                        Username:
-                    </td>
-                    <td>
-                        <input type="text" id="username" name="username" ng-model="user.username" title="username" required>
-                        <div>
-                            <span ng-show="userRegForm.username.$dirty && userRegForm.username.$error.required">
-                                Enter username
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Name:
-                    </td>
-                    <td>
-                        <input type="text" id="name" name="name" ng-model="user.name" title="name" required>
-                        <div>
-                            <span ng-show="userRegForm.name.$dirty && userRegForm.name.$error.required">
-                                Enter name
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Address:
-                    </td>
-                    <td>
-                        <input type="text" id="address" name="address" ng-model="user.address" title="address">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Email:
-                    </td>
-                    <td>
-                        <input type="email" id="email" name="email" ng-model="user.email" title="email" required>
-                        <div>
-                            <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.required">
-                                Enter email
-                            </span>
-                            <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.email">
-                                Enter valid email
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Mobile:
-                    </td>
-                    <td>
-                        <input type="text" id="mobile" name="mobile" ng-model="user.mobile" title="mobile" required>
-                        <div>
-                            <span ng-show="userRegForm.mobile.$dirty && userRegForm.mobile.$error.required">
-                                Enter mobile number
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="reset" ng-click="reset(userRegForm)" value="Reset" class="btn btn-default">
-                    </td>
-                    <td>
-                        <input type="submit" value="Add User" class="btn btn-primary" ng-disabled="userRegForm.$invalid">
-                    </td>
-                </tr>
-            </table>
-       </div>
-    </form>
-    <pre>user = {{user | json}}</pre>
-    <pre>master = {{master | json}}</pre>
 </div>
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
 <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="./app/app.js"></script>
 <script type="text/javascript" src="app/controllers.js"></script>
 <script type="text/javascript" src="app/services.js"></script>
