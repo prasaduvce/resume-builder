@@ -1,0 +1,17 @@
+/**
+Custom Styles for the Resume builder app.
+ */
+.navbar-inverse {
+    background-color: #286090;
+    border-color: #286090;
+}
+
+input.ng-invalid.ng-dirty {
+    border: 1px solid red;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+    font-size: larger;
+    font-weight: 600;
+}
