@@ -1,96 +1,95 @@
-<div class="container">
-    <h1 class="text-info bg-info">User Registration</h1>
-    <p class="text-primary">Please enter the user details for registration.</p>
-    <div ng-controller="RegisterController" class="container-fluid">
-        <div ng-show="errors.length > 0">
-            <div class="bg-warning"> Please correct below errors.</div>
-            <div ng-repeat="error in errors" class="bg-danger">
-                {{error.errorMessage}}
-            </div>
+<div class="container blok">
+<h1 class="text-info fontColorffffff">User Registration</h1>
+<h3 class="text-primary fontColorffffff">Please enter the user details for registration.</h3>
+<div ng-controller="RegisterController" class="container-fluid">
+    <div ng-show="errors.length > 0">
+        <div class="bg-warning"> Please correct below errors.</div>
+        <div ng-repeat="error in errors" class="bg-danger">
+            {{error.errorMessage}}
         </div>
+    </div>
 
-        <div ng-show="httpStatus === 200">
-            <div class="bg-success">User details saved successfully.</div>
-        </div>
+    <div ng-show="httpStatus === 200">
+        <div class="bg-success">User details saved successfully.</div>
+    </div>
 
-        <form name="userRegForm" ng-submit="addUser(user)" novalidate="" class="form-horizontal">
-            <div class="table-responsive">
+    <form name="userRegForm" ng-submit="addUser(user)" novalidate="" class="form-horizontal">
+        <div class="table-responsive">
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="Username">Username:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="username" name="username" ng-model="user.username" title="username" required>
-                        <div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 fontColorffffff" for="Username">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="username" name="username" ng-model="user.username" title="username" required>
+                    <div>
                             <span ng-show="userRegForm.username.$dirty && userRegForm.username.$error.required"
                                   class="text-danger">
                                 Enter username
                             </span>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="Name">Name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="name" name="name" ng-model="user.name" title="name" required>
-                        <div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 fontColorffffff" for="Name">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="name" name="name" ng-model="user.name" title="name" required>
+                    <div>
                             <span ng-show="userRegForm.name.$dirty && userRegForm.name.$error.required"
                                   class="text-danger">
                                 Enter name
                             </span>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="Address">Address:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="address" name="address" ng-model="user.address" title="address">
-                    </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 fontColorffffff" for="Address">Address:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="address" name="address" ng-model="user.address" title="address">
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="Email">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="email" id="email" name="email" ng-model="user.email" title="email" required>
-                        <div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 fontColorffffff" for="Email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" id="email" name="email" ng-model="user.email" title="email" required>
+                    <div>
                             <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.required"
                                   class="text-danger">
                                 Enter email
                             </span>
-                            <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.email" class="text-danger">
+                        <span ng-show="userRegForm.email.$dirty && userRegForm.email.$error.email" class="text-danger">
                                 Enter valid email
                             </span>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="Mobile">Mobile:</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="mobile" name="mobile" ng-model="user.mobile" title="mobile" required>
-                        <div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 fontColorffffff" for="Mobile">Mobile:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="mobile" name="mobile" ng-model="user.mobile" title="mobile" required>
+                    <div>
                             <span ng-show="userRegForm.mobile.$dirty && userRegForm.mobile.$error.required"
                                   class="text-danger">
                                 Enter mobile number
                             </span>
-                        </div>
                     </div>
                 </div>
-
-
-                <div class="form-group">
-                    <div class="control-label col-sm-2">
-                        <input type="reset" ng-click="reset(userRegForm)" value="Reset" class="btn btn-default">
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="submit" value="Add User" class="btn btn-primary" ng-disabled="userRegForm.$invalid">
-                    </div>
-                </div>
-
             </div>
-        </form>
-        <pre>user = {{user | json}}</pre>
-        <pre>master = {{master | json}}</pre>
-    </div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <input type="reset" ng-click="reset(userRegForm)" value="Reset" class="btn btn-primary">
+                </div>
+                <div class="col-sm-10">
+                    <input type="submit" value="Add User" class="btn btn-primary" ng-disabled="userRegForm.$invalid">
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <pre>user = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>
 </div>
