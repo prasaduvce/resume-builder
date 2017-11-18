@@ -17,6 +17,9 @@ public class User {
 	@Indexed(unique = true)
     private String username;
 
+	@NotBlank
+	private String password;
+
     @NotBlank
     private String name;
 
@@ -51,6 +54,15 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPassword() {
+
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getAddress() {
@@ -88,6 +100,7 @@ public class User {
 		User user = (User) o;
 		return Objects.equals(getId(), user.getId()) &&
 			   Objects.equals(getUsername(), user.getUsername()) &&
+			   Objects.equals(getPassword(), user.getPassword()) &&
 			   Objects.equals(getName(), user.getName()) &&
 			   Objects.equals(getAddress(), user.getAddress()) &&
 			   Objects.equals(getEmail(), user.getEmail()) &&
@@ -96,7 +109,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getId(), getUsername(), getName(), getAddress(), getEmail(), getMobile());
+		return Objects.hash(getId(), getUsername(), getPassword(), getName(), getAddress(), getEmail(), getMobile());
 	}
 
 	@Override
@@ -104,6 +117,7 @@ public class User {
 		return "User{" +
 			   "id='" + id + '\'' +
 			   ", username='" + username + '\'' +
+			   ", password='" + password + '\'' +
 			   ", name='" + name + '\'' +
 			   ", address='" + address + '\'' +
 			   ", email='" + email + '\'' +

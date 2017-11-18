@@ -10,6 +10,10 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Aspect
@@ -60,7 +64,24 @@ public class LoggingAspect {
 
 	private String getApiEndPoint(JoinPoint jp) {
 		MethodSignature ms = (MethodSignature) jp.getSignature();
-		String[] mappings = ms.getMethod().getAnnotation(RequestMapping.class).value();
+		RequestMapping requestMapping = ms.getMethod().getAnnotation(RequestMapping.class);
+		PostMapping postMapping = ms.getMethod().getAnnotation(PostMapping.class);
+		GetMapping getMapping = ms.getMethod().getAnnotation(GetMapping.class);
+		PutMapping putMapping = ms.getMethod().getAnnotation(PutMapping.class);
+		DeleteMapping deleteMapping = ms.getMethod().getAnnotation(DeleteMapping.class);
+		String[] mappings = {};
+		//TODO: Find better way for this.
+		if (requestMapping != null) {
+			mappings = ms.getMethod().getAnnotation(RequestMapping.class).value();
+		} else if (postMapping != null) {
+			mappings = ms.getMethod().getAnnotation(PostMapping.class).value();
+		} else if (getMapping != null) {
+			mappings = ms.getMethod().getAnnotation(GetMapping.class).value();
+		} else if (putMapping != null) {
+			mappings = ms.getMethod().getAnnotation(PutMapping.class).value();
+		} else if (deleteMapping != null) {
+			mappings = ms.getMethod().getAnnotation(DeleteMapping.class).value();
+		}
 		return Arrays.stream(mappings).findAny().isPresent() ? mappings[0] : null;
 	}
 
